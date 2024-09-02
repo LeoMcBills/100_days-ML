@@ -20,4 +20,7 @@ lspci -v | grep -i vga
 This is a basic intro to pytorch and the fashionmnist dataset
 
 *Link to torchvision dataset*
-[link to torchvision datasets](https://pytorch.org/vision/stable/datasets.html)
+[click here](https://pytorch.org/vision/stable/datasets.html)
+
+## About moving the dataset
+We pass the Dataset as an argument to DataLoader. This wraps an iterable over our dataset, and supports automatic batching, sampling, shuffling and multiprocess data loading. Here we define a batch size of 64, i.e. each element in the dataloader iterable will return a batch of 64 features and labels.
