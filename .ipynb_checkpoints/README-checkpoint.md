@@ -15,3 +15,6 @@ This will display information about the GPU, if present. The output should show 
 ```bash
 lspci -v | grep -i vga
 ```
+
+## Quickstart
+This is a basic intro to pytorch and the fashionmnist dataset
