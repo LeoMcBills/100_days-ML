@@ -19,5 +19,5 @@ lspci -v | grep -i vga
 ## Quickstart
 This is a basic intro to pytorch and the fashionmnist dataset
 
-'Link to torchvision dataset'
-[!https://pytorch.org/vision/stable/datasets.html]
+*Link to torchvision dataset*
+[link to torchvision datasets](https://pytorch.org/vision/stable/datasets.html)
