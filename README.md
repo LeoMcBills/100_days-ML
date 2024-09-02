@@ -5,7 +5,7 @@
 ## 1. Using 'lspci' Command
 The 'lspci' command lists all PCI devices in your system, including the GPU
 
--> Open a terminal and run:
+> Open a terminal and run:
 ```bash
 lspci | grep -i vga
 ```
