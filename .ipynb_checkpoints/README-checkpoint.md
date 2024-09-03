@@ -29,3 +29,6 @@ We pass the Dataset as an argument to DataLoader. This wraps an iterable over ou
 Tensors are a specialized data structure that are very similar to arrays and matrices. In PyTorch, we use tensors to encode the inputs and outputs of a model, as well as the model's parameters.
 
 Tensors are similar to NumPy's ndarrays, except that tensors can run on GPUs or other hardware accelerators. In fact, tensors and NumPy arrays can often share the same underlying memory, eliminating the need to copy data. Tensors are close optimized for automatic differentiation (we'll see more about that later in the Autograd section). If you are familiar with ndarrays, you'll be right at home with the Tensor API.
+
+# Day 3
+## Day 2 of a quick intro to pytorch and a continuation of tensors  
