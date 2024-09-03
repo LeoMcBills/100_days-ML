@@ -1,41 +1,64 @@
-# 100_days-ML
+# 100 Days of Machine Learning
 
-## How to check for a particular GPU
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 3**.
 
-## 1. Using 'lspci' Command
-The 'lspci' command lists all PCI devices in your system, including the GPU
+---
 
-> Open a terminal and run:
-```bash
-lspci | grep -i vga
-```
-This will display information about the GPU, if present. The output should show something like 'VGA compatible controller' followed by the GPU model.
+## Day 3: Deep Dive into Tensors and the `@` Operator
 
-> For more detailed information:
-```bash
-lspci -v | grep -i vga
-```
+### The Importance of the `@` Operator in PyTorch
+- **Matrix Multiplication:** The `@` operator simplifies matrix multiplication for 2D tensors, making your code more readable.
+- **Matrix-Vector Multiplication:** Easily multiply a matrix by a vector using the `@` operator.
+- **Dot Product:** Compute the dot product between two vectors with a single `@` operation.
 
-## Quickstart
-This is a basic intro to pytorch and the fashionmnist dataset
+This operator is a game-changer for making matrix operations more intuitive compared to `torch.matmul()`.
 
-*Link to torchvision dataset*
-[click here](https://pytorch.org/vision/stable/datasets.html)
+---
 
-## About moving the dataset
-We pass the Dataset as an argument to DataLoader. This wraps an iterable over our dataset, and supports automatic batching, sampling, shuffling and multiprocess data loading. Here we define a batch size of 64, i.e. each element in the dataloader iterable will return a batch of 64 features and labels.
+## Day 2: Continuing with Tensors and PyTorch Basics
 
-# Tensors
-Tensors are a specialized data structure that are very similar to arrays and matrices. In PyTorch, we use tensors to encode the inputs and outputs of a model, as well as the model's parameters.
+### Understanding Tensors
+Tensors are the backbone of PyTorch. They're similar to NumPy arrays but are optimized for GPU operations and automatic differentiation. Whether you're dealing with data inputs, outputs, or model parameters, tensors will be your go-to data structure.
 
-Tensors are similar to NumPy's ndarrays, except that tensors can run on GPUs or other hardware accelerators. In fact, tensors and NumPy arrays can often share the same underlying memory, eliminating the need to copy data. Tensors are close optimized for automatic differentiation (we'll see more about that later in the Autograd section). If you are familiar with ndarrays, you'll be right at home with the Tensor API.
+- **Flexibility:** Tensors can seamlessly interact with NumPy arrays, often sharing memory without data copying.
+- **Optimization:** Designed for GPU acceleration and automatic differentiation, making them ideal for deep learning.
 
-# Day 3
-## Day 2 of a quick intro to pytorch and a continuation of tensors  
+---
 
-### The importance of an `@` operator:  
-* `@` performs matrix multiplication when used with 2D tensors (matrices).
-* It performs matrix-vector multiplication when used with a matrix and a vector.
-* It computes the dot product when used with two vectors.
+## Day 1: Getting Started with PyTorch and FashionMNIST
 
-This operator simplifies and clarifies the syntax for matrix operations in PyTorch, making code more readable and concise compared to using functions like torch.matmul().
+### Quickstart with PyTorch and FashionMNIST
+The first step in my journey was a basic introduction to PyTorch using the FashionMNIST dataset. This popular dataset, available via `torchvision`, is a great way to start experimenting with image classification.
+
+- **Link to Torchvision Dataset:** [Click here](https://pytorch.org/vision/stable/datasets.html)
+
+### Loading the Dataset
+The `DataLoader` in PyTorch makes it easy to handle large datasets. By passing our dataset as an argument to `DataLoader`, we can efficiently batch, shuffle, and load data using multiple processes.
+
+- **Batch Size:** In my example, I used a batch size of 64, which is a common choice for training deep learning models.
+
+---
+
+## Useful Tips and Commands
+
+### How to Check for a Particular GPU
+
+1. **Using the `lspci` Command:**
+   - To list all PCI devices, including the GPU:
+     ```bash
+     lspci | grep -i vga
+     ```
+   - For more detailed information:
+     ```bash
+     lspci -v | grep -i vga
+     ```
+
+These commands are essential for confirming the presence and details of a GPU in your system, which is crucial when working with deep learning models that benefit from GPU acceleration.
+
+---
+
+## Goals and Expectations
+
+This README will evolve as I progress through the 100 days, documenting my learning, challenges, and achievements. Whether you’re following along or just browsing, I hope you find this resource helpful!
+
+---
