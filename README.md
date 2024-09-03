@@ -32,3 +32,10 @@ Tensors are similar to NumPy's ndarrays, except that tensors can run on GPUs or 
 
 # Day 3
 ## Day 2 of a quick intro to pytorch and a continuation of tensors  
+
+### The importance of an `@` operator:  
+* `@` performs matrix multiplication when used with 2D tensors (matrices).
+* It performs matrix-vector multiplication when used with a matrix and a vector.
+* It computes the dot product when used with two vectors.
+
+This operator simplifies and clarifies the syntax for matrix operations in PyTorch, making code more readable and concise compared to using functions like torch.matmul().
