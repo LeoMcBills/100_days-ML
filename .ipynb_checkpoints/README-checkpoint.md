@@ -6,6 +6,10 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ## Day 4: Datasets and Dataloaders  
 
+Code for processing data samples can get messy and hard to maintain; we ideally want our dataset code to be decoupled from our model training code for better readability. Pytorch provides two data primitives: `torch.utils.data.DataLoader` and `torch.utils.data.Dataset` that allow you to use pre-loaded datasets as well as your own data. `Dataset` stores the samples and their corressponding labels, and `DataLoader` wraps an iterable around the `Dataset` to enable easy access to the samples.
+
+PyTorch domain libraries provide a number of pre-loaded datasets (such as FashionMNIST) that subclass `torch.utils.data.Dataset` and implement functions specific to the particular data. They can be used to prototype and benchmark your model. You can be used to prototype and benchmark your model.
+
 ---
 
 ## Day 3: Deep Dive into Tensors and the `@` Operator
