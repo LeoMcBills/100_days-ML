@@ -12,6 +12,10 @@ All TorchVision datasets have two parameters -`transform` to modify the features
 
 The FashionMNIST features are in PIL image format, and the labels are integers. For training, we need the features as normalized tensors, and the labels as one-hot encoded tensors. To make these transformations, we use `ToTensors` and `Lambda`.
 
+## Build the Neural Network
+Neural networks comprise of layers/modules that perform operations on data. The `torch.nn` namespace provides all the building blocks you need to build your own neural network. Every module in PyTorch subclasses the `nn.Module`. A neural network is a module itself that consists of other modules (layers). This nested structure allows for building and managing complex architectures easily.
+
+In the following sections, we'll build a neural network to classify images in the FashionMNIST dataset.
 
 ---
 
