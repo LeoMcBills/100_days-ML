@@ -17,4 +17,4 @@ print(f"Using {device} device")
 
 
 # Define neural network
-class NeuralNetwork(nn.Module)
+
