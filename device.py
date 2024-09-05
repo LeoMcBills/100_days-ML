@@ -14,3 +14,7 @@ device = (
 	else "cpu"
 )
 print(f"Using {device} device")
+
+
+# Define neural network
+class Neu
