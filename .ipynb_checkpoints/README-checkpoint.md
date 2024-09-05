@@ -4,6 +4,12 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
+## Day 5: Transforms
+
+
+
+---
+
 ## Day 4: Datasets and Dataloaders  
 
 Code for processing data samples can get messy and hard to maintain; we ideally want our dataset code to be decoupled from our model training code for better readability. Pytorch provides two data primitives: `torch.utils.data.DataLoader` and `torch.utils.data.Dataset` that allow you to use pre-loaded datasets as well as your own data. `Dataset` stores the samples and their corressponding labels, and `DataLoader` wraps an iterable around the `Dataset` to enable easy access to the samples.
