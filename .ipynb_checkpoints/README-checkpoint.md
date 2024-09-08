@@ -1,10 +1,20 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 6**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 8**.
 
 ---
 
-## Day 6: Transforms
+## Day 8: Regularization 
+
+
+---
+
+## Day 7: Regularization 
+I read about Regularization in machine learning.
+
+---
+
+## Day 6: GPUs
 Today read about and studied about GPUs, how they work, their functionality and their role in training machine learning models.
 
 ---
