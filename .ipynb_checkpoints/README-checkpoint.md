@@ -5,7 +5,7 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ---
 
 ## Day 9: A peek into Distributed and Parallel Training Tutorials
-
+Distributed training is a model training paradigm that involves spreading training workload across multiple worker nodes, therefore significantly improving the speed of training and model accuracy. While distributed training can be used for any type of ML model training, it is most beneficial to use it for large models and compute demanding tasks as deep learning.
 
 
 ---
