@@ -6,6 +6,11 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ## Day 13: A continuation with Distributed and Parallel Training Tutorials
 
+> *Note* : *Fun Joke!* *What is the dictionary definition of shard?*
+> - (online gaming) An instance of an MMORPG that is one of several independent and structurally identical virtual worlds, none of which has so many players as to exhaust a system's resources.
+> - The other is, (database) A component of a sharded distributed database.
+> - Synonyms: partition 
+
 ---
 
 ## Day 12: A continuation with Distributed and Parallel Training Tutorials
