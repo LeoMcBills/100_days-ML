@@ -1,6 +1,57 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 13**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 14**.
+
+---
+
+## Day 14: I researched and wrote an article on how to find and use GPUs in Pytorch
+
+	 	 	 	  
+Overcoming GPU Limitations in AI Research: Tips for Resource-Constrained Developers
+
+Hello!
+
+The race for compute power is a hot topic among AI Researchers. The race for compute power is a critical challenge in the world of AI and machine learning. NVIDIA, a $3 trillion company based in Santa Clara, California, is leading this revolution.
+
+For many researchers—especially those in low-resource regions—access to GPUs is a major barrier. But don’t let that stop you!
+
+In this post, I’ll cover the role of GPUs in machine learning, using them with PyTorch, leveraging multiple GPUs, and—most importantly—how to access GPUs without purchasing one, especially if you're from a low-resource region like me.
+
+**So, why are GPUs essential in AI?**  
+ GPUs handle the heavy math behind AI, processing vast datasets efficiently thanks to their parallelized cores. While your typical home computer has a CPU with a few cores, GPUs have thousands—making them perfect for training complex machine learning models.
+
+**Using GPUs in PyTorch:**  
+ You can easily check for available GPUs in PyTorch with this code:
+
+
+```python
+import torch
+
+device = ("cuda"
+          if torch.cuda.is\_available()
+          else "mps"
+          if torch.backends.mps.is_available()
+          else "cpu"
+)
+print(f"Using {device} device")**
+
+```
+
+Checkout the simple explanation from the [PyTorch documentation](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) on how to move your tensors to the GPU.
+
+Want to scale up? You can leverage [**Distributed and Parallel Training**](https://pytorch.org/tutorials/distributed/home.html) using techniques like DistributedDataParallel (DDP) and Tensor Parallel (TP) to train large models on multiple GPUs.
+
+**No GPU? No problem!**  
+ Here are a few free alternatives to get started:
+
+* **Kaggle Kernels**: 	Free access to Nvidia K80 GPUs. [Learn 	more](https://www.kaggle.com/code/dansbecker/running-kaggle-kernels-with-a-gpu).  
+   	  
+* **Google Colab**: Free GPUs for small projects, 	with Pro options for more power. [Read 	more](https://www.geeksforgeeks.org/how-to-use-gpu-in-google-colab/).
+
+For larger projects, check [**Google Cloud**](https://cloud.google.com/compute/gpus-pricing?_gl=1*152ua1h*_up*MQ..&gclid=CjwKCAjw6JS3BhBAEiwAO9waF1gethq5sbpnf6Nb14gL8alrn4Tr4wr8F6ZAaKuXSiZAmPGRVfcoEhoCJlsQAvD_BwE&gclsrc=aw.ds) pricing or explore platforms like [**vast.ai**](https://vast.ai/) for affordable GPU rentals. Also, check out this blog on the [**Top 10 cloud GPU platforms for deep learning**](https://blog.paperspace.com/top-ten-cloud-gpu-platforms-for-deep-learning/) by Samuel Ozechi.
+
+I hope this helps someone out there facing similar challenges. Keep pushing forward in your AI research, and good luck on your journey\! 💪🚀
+
 
 ---
 
