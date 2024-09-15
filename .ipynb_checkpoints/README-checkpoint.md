@@ -4,6 +4,10 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
+## Day 15: Last day on an intro to Distributed and Data Parallel programming
+
+---
+
 ## Day 14: I researched and wrote an article on how to find and use GPUs in Pytorch
 
 	 	 	 	  
