@@ -1,6 +1,14 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 17**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 19**.
+
+---
+
+## Day 19: Continuation with the training of the classifier
+
+---
+
+## Day 18: Continuation with the training of the classifier
 
 ---
 
