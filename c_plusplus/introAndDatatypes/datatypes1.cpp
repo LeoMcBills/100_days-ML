@@ -1,5 +1,5 @@
 #include <iostream>
-#include <climits>       // Definition of INT_MIN, INT_MAX, ....
+#include <climits>       // Definition of INT_MIN, INT_MAX, UINT_MIN, UINT_MAX, CHAR_MIN, CHAR_MAX
 using namespace std;
 
 int main()
