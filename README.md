@@ -1,6 +1,21 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 20**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 21**.
+
+---
+
+## Day 21: Introduction to C++ programming
+
+### How to run c++ in my terminal
+1. Write the program and save it as an `.cpp` program
+2. Compile the program using the g++ compiler by;
+```bash
+g++ -o execfile program.cpp
+```
+3. Run the executable file
+```bash
+./execfile
+```
 
 ---
 
