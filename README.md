@@ -17,6 +17,19 @@ g++ -o execfile program.cpp
 ./execfile
 ```
 
+### Use a Build System (Optional)
+If you are working on larger projects, you might want to use `make` or `cmake` to handle the build process. Install them with:
+```bash
+sudo apt install make cmake
+```
+You can then set up `Makefiles` or `CMakeLists.txt` for more complex projects.
+
+### Debugging Tools (Optional)
+For debugging, you can install `gdb`, the GNU debugger:
+```bash
+sudo apt install gdb
+```
+
 ---
 
 Day 20: Read about CUDA Programming 
