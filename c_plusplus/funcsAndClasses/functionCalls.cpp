@@ -17,6 +17,9 @@ int main() {
     cout << "2.5 raised to the power 3 is " << y << endl;
 
     cout << y << endl;
+
+    // Calculating with pow() is not always the best solution but is possible
+    cout << "5 raised to power of 2.5 is " << pow(5.0, x) << endl;
     
     return 0;
 }
