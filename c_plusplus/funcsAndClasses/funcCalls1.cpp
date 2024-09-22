@@ -22,4 +22,9 @@ int main()
     z1 = rand(); // compute three random numbers
     z2 = rand();
     z3 = rand();
+
+    cout << "\nThree random numbers: " << z1 <<
+    ", " << z2 << ", " << "and " << z3 << endl;
+
+    return 0;
 }
