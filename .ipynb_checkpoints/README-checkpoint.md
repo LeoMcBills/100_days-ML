@@ -1,6 +1,43 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 19**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 23**.
+
+---
+
+## Day 23: Operators for Fundamental Types
+Today, I shall look at operators needed for calculations and selections are introduced. Overloading and other operators, such as those needed for bit manipulations, are gonna be tackled later.
+
+---
+
+## Day 21: Introduction to C++ programming
+
+### How to run c++ in my terminal
+1. Write the program and save it as an `.cpp` program
+2. Compile the program using the g++ compiler by;
+```bash
+g++ -o execfile program.cpp
+```
+3. Run the executable file
+```bash
+./execfile
+```
+
+### Use a Build System (Optional)
+If you are working on larger projects, you might want to use `make` or `cmake` to handle the build process. Install them with:
+```bash
+sudo apt install make cmake
+```
+You can then set up `Makefiles` or `CMakeLists.txt` for more complex projects.
+
+### Debugging Tools (Optional)
+For debugging, you can install `gdb`, the GNU debugger:
+```bash
+sudo apt install gdb
+```
+
+---
+
+Day 20: Read about CUDA Programming 
 
 ---
 
