@@ -9,6 +9,11 @@ Today, I shall look at operators needed for calculations and selections are intr
 
 ---
 
+## Day 22: Functions and classes
+I looked at functions and classes in c++ basically but did not look at user defined classes
+
+---
+
 ## Day 21: Introduction to C++ programming
 
 ### How to run c++ in my terminal
