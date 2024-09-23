@@ -7,6 +7,12 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ## Day 23: Operators for Fundamental Types
 Today, I shall look at operators needed for calculations and selections are introduced. Overloading and other operators, such as those needed for bit manipulations, are gonna be tackled later.
 
+## Control Flow
+In this chapter, I was introduced to the statements needed to control the flow of a program. These are;
+* loops with while, do-while, and for
+* selections with if-else, switch, and the conditional operator
+* jumps with goto, continue, and break
+
 ---
 
 ## Day 22: Functions and classes
