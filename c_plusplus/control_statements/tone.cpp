@@ -20,6 +20,5 @@ int main()
     
     cout << "End of the acoustic interlude!" << endl;
     
-
     return 0;
 }
