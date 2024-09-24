@@ -17,9 +17,9 @@ int main()
             cout << "Now the tone!\a" << endl;
         }
     } while (--tic > 0);
-    {
-        cout << "End of the acoustic interlude!" << endl;
-    }
+    
+    cout << "End of the acoustic interlude!" << endl;
+    
 
     return 0;
 }
