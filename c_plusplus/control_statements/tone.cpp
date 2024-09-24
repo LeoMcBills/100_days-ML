@@ -12,7 +12,7 @@ int main()
 
     do
     {
-        for (long i = 0; i < delay; i++)
+        for (long i = 0; i < delay; ++i)
         {
             cout << "Now the tone!\a" << endl;
         }
