@@ -13,7 +13,7 @@ int main()
     }
     else {
         cout << "\nThe greater value is: "
-                << (x > y? x : y)
+                << (x > y? y : x)
                 << endl;
     }
 
