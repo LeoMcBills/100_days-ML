@@ -12,9 +12,9 @@ int main()
     if (cin >> x && cin >> y)
     {
         if (x > y){
-            min = x;
-        } else {
             min = y;
+        } else {
+            min = x;
         }
         cout << "\nThe smaller number is: " << min << endl;
     } else {
