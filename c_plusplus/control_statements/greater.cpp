@@ -7,7 +7,7 @@ int main()
 
     cout << "Type two different numbers: \n";
 
-    if (!(cin >> x && cin >> y))
+    if (!(cout << "==> ", cin >> x && cout << "==> ", cin >> y))
     {
         cout << "\nInvalid input!" << endl;
     }
