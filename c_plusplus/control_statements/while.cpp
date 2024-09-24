@@ -6,5 +6,8 @@ using namespace std;
 
 int main()
 {
+    int x, count(0);
+    float sum(0.0);
+
     
 }
