@@ -1,6 +1,11 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 23**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 24**.
+
+---
+
+## Day 24: Deep dive into control statements
+
 
 ---
 
