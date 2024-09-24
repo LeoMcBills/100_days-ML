@@ -16,7 +16,12 @@ int main()
         sum += x;
         ++count;
         cout << "The average of the numbers entered so far is " << sum / count << endl;
+        if (x == '\0')
+            {
+                break;
+            }
     }    
+    cout << "The final average is " << sum / count << endl;
 
     return 0;
 }
