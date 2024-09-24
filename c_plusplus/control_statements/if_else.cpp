@@ -9,7 +9,7 @@ int main()
 
     cout << "Enter two different numbers:\n";
     
-    if (cin >> x && cin >> y)
+    if (cout << "-------"; cin >> x && cout << "\n-------"; cin >> y)
     {
         if (x > y){
             min = y;
