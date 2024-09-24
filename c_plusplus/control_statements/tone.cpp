@@ -12,13 +12,12 @@ int main()
 
     do
     {
-        for (long i = 0; i < delay; ++i)
-        {
-            cout << "Now the tone!\a" << endl;
-        }
+        for (long i = 0; i < delay; ++i);
+        cout << "Now the tone!\a" << endl;
+        
     } while (--tic > 0);
     
     cout << "End of the acoustic interlude!" << endl;
-    
+
     return 0;
 }
