@@ -23,7 +23,7 @@ int main()
         std::cout << std::setw(20) << x << std::setw(16) << sin(x) << std::endl;
     }
 
-    
+    std::cout << std::endl << std::endl;
 
     return 0;           
 
