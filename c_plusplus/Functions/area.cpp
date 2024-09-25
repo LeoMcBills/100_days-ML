@@ -26,5 +26,5 @@ int main()
 // Computes the area of a rectangle.
 double area (double width, double len)
 {
-    return (width * len)
+    return (width * len);
 }
