@@ -10,6 +10,9 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 This chapter introduces implicit type conversions, which are performed in c++ whenever different arithmetic types occur in expressions.
 Additionally, an operator for explicit type conversion is introduced.
 
+## The standard Class string
+This chapter introduces the standard class string, which is used to represent strings. Besides defining strings we will also look at various methods of string manipulation. These include inserting and erasing, searching and replacing, comparing and concatenating strings.
+
 ---
 
 ## Day 24: Deep dive into control statements
