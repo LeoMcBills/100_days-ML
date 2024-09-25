@@ -13,6 +13,13 @@ Additionally, an operator for explicit type conversion is introduced.
 ## The standard Class string
 This chapter introduces the standard class string, which is used to represent strings. Besides defining strings we will also look at various methods of string manipulation. These include inserting and erasing, searching and replacing, comparing and concatenating strings.
 
+## Functions
+This chapter describes how to write functions of your own. Besides the basic rules, the following topics are discussed:
+- passing arguments
+- definition of iniline functions
+- overloading functions and default arguments
+- the principle of recursion
+- 
 ---
 
 ## Day 24: Deep dive into control statements
