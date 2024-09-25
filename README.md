@@ -6,6 +6,10 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ## Day 25: Macros in c++
 
+## Converting Arithmetic Types
+This chapter introduces implicit type conversions, which are performed in c++ whenever different arithmetic types occur in expressions.
+Additionally, an operator for explicit type conversion is introduced.
+
 ---
 
 ## Day 24: Deep dive into control statements
