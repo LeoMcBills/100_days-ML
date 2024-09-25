@@ -14,6 +14,18 @@ using namespace std;
 
 int main()
 {
+    double x;
+
+    HEADER;
+
+    cout << setw(16) << "x" << setw(20) << "sin(x)\n" 
+        << "---------------------------------------------------------------"
+        << fixed << endl;
+
+    for (x = START; x < END + STEP / 2; x += STEP ){
+        cout << setw(20) << x << setw(16) << sin(x) << endl;
+    }
+    cout << endl << endl;
 
     return 0;
 }
