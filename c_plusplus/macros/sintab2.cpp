@@ -19,6 +19,12 @@ int main()
     std::cout << std::setw(16) << "x" << std::setw(20) << "sin(x)\n" << std::endl;
     std::cout << std::setw(20) << x << std::setw(16) << sin(x) << std::endl;
 
+    for (x = START; x < END + STEP / 2; x += STEP ) {
+        std::cout << std::setw(20) << x << std::setw(16) << sin(x) << std::endl;
+    }
+
+    
+
     return 0;           
 
 }
