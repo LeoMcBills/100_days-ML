@@ -16,8 +16,8 @@ int main()
 
     HEADER;
 
-    std::cout << setw(16) << "x" << setw(20) << "sin(x)\n" << endl;
-    std::cout << std::setw(20) << x << std::setw(16) << sin(x) << endl;
+    std::cout << setw(16) << "x" << setw(20) << "sin(x)\n" << std::endl;
+    std::cout << std::setw(20) << x << std::setw(16) << sin(x) << std::endl;
 
     return 0;           
 
