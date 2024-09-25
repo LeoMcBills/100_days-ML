@@ -8,7 +8,7 @@
 #define START       0.0
 #define END         (2.0 * PI)
 #define STEP        (PI / 8.0)
-#define HEADER      (cout << "\n *************** Sine Function Table *************\n")
+#define HEADER      (std::cout << "\n *************** Sine Function Table *************\n")
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 
     HEADER;
 
-    std::cout << setw(16) << "x" << setw(20) << "sin(x)\n" << std::endl;
+    std::cout << std::setw(16) << "x" << std::setw(20) << "sin(x)\n" << std::endl;
     std::cout << std::setw(20) << x << std::setw(16) << sin(x) << std::endl;
 
     return 0;           
