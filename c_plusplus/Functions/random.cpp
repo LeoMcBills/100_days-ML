@@ -23,6 +23,12 @@ inline int myRandom(int start, int end)
     return (rand() % (end+1 - start) + start);
 }
 
+inline double myRandom()
+{
+    init_random();
+    return (double)rand() / (double)RAND_MAX;
+}
+
 // Testing myRandom() and myRandom(int, int)
 int main()
 {
