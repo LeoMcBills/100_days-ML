@@ -10,7 +10,7 @@ using namespace std;
 #define END         (2.0 * PI)
 #define STEP        (PI / 8.0)
 #define HEADER      (cout << \
-        "  *****  Sine Function Table  *****\n\n")
+        "\n  *****  Sine Function Table  *****\n\n")
 
 int main()
 {
