@@ -5,6 +5,6 @@
 namespace MySpace
 {
     std::string mess = "Within namespace MySpace";
-    int count = 0;
-    double f( double); 
+    int count = 0;          // Definition: MySpace::count
+    double f( double);      // Prototype:  MySpace::f()
 }
