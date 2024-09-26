@@ -1,6 +1,11 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 25**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 26**.
+
+---
+
+## Day 26: Storage Classes and Namespaces
+This chapter begins by describing storage classes for objects and functions. The storage class is responsible for defining those parts of a program where an object or function can be used. Namespaces can be used to avoid conflicts when naming global identifiers.
 
 ---
 
@@ -19,7 +24,7 @@ This chapter describes how to write functions of your own. Besides the basic rul
 - definition of iniline functions
 - overloading functions and default arguments
 - the principle of recursion
-- 
+
 ---
 
 ## Day 24: Deep dive into control statements
