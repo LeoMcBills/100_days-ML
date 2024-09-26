@@ -7,8 +7,19 @@
 using namespace std;
 
 long timediff(void);
+bool getPassword();
 static string secret = "ISUS";
 static long maxcount = 3, maxtime = 60;
+
+int main()
+{
+    if ( getPassword() )
+        cout << "Access granted\n";
+    else
+        cout << "Access denied\n";
+
+    return 0;
+}
 
 bool getPassword()
 {
