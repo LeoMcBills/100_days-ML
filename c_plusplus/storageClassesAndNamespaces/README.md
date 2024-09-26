@@ -4,4 +4,8 @@ The storage class of an object is determined by
 - the storage class specifier, which can be supplied optionally.
 
 The following storage class specifiers can be used  
-**extern**          **static**    **auto**    **register**
+<pre>
+    <b>
+        extern          static          auto            register
+    </b>
+</pre>
