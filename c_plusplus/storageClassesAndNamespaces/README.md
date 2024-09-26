@@ -5,7 +5,5 @@ The storage class of an object is determined by
 
 The following storage class specifiers can be used  
 <pre>
-    <b>
-        extern          static          auto            register
-    </b>
+extern          static          auto            register
 </pre>
