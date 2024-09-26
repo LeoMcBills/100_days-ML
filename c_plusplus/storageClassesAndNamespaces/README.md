@@ -28,3 +28,12 @@ referred to as global.
 Access to an object as defined by the object’s storage class is independent of anyaccess controls for the elements of a class. Namespaces that subdivide program scope and
 classes will be introduced at a later stage.  
 
+## Lifetime  
+Objects with block scope are normally created automatically within the code block that defines them. Such objects can only be accessed by statements within that block and are called **local** to that block. The memory used for these objects is freed after leaving the code block. In this case, the lifetime of the objects is said to be **automatic**.
+
+However, it is possible to define objects with block scope that are available through-out the runtime of a program. The lifetime of these objects is said to be **static**. When the program flow re-enters a code block, any pre-existing conditions will apply.
+
+Objects with program and file scope are always **static**. These objects are created when a program is launched and are available until the program is terminated.
+
+Four storage classes are available for creating objects with the scope and lifetime
+
