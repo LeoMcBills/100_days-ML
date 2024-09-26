@@ -35,6 +35,16 @@ int MySpace::g()
 #include <iostream>        // cout, ... within namespace std
 int main()
 {
+    std::cout << "Testing namespaces!\n\n"
+              << MySpace::mess << std::endl;
+            
+    MySpace::g();
+    std::cout << "\nReturn value g(): " << MySpace::g()
+              << "\nReturn value f(): " << MySpace::f(1.2)
+              << "\n--------------------------------------" << std::endl;
 
-    
+    YourSpace::f();
+    std::cout << YourSpace::mess << std::endl;
+
+    return 0;
 }
