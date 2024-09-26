@@ -50,5 +50,5 @@ long timediff()
     static long sec = 0;
     long oldsec = sec;
     time( &sec);
-    return (sec - oldsec)
+    return (sec - oldsec);
 }
