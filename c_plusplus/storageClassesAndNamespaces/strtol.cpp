@@ -24,7 +24,7 @@ long strToLong(string str)
     if ( i < str.size())
     {
         if( str[i] == '+') { vz = 1; ++i; }
-        if( str[i] == '-') { vz = ---1; ++i; }
+        if( str[i] == '-') { vz = -1; ++i; }
     }
 
     // Sequence of digits -> convert to integer
