@@ -18,3 +18,23 @@ namespace YourSpace
     }
 }
 
+namespace MySpace           // Back in MySpace
+{
+    int g(void);           // Prototype:  MySpace::g()
+    double f( double y)    // Definition: MySpace::f()
+    {
+        return y / 10.0;
+    }
+}
+
+int MySpace::g()
+{
+    return ++count;        // Separate definition of MySpace::g()
+}
+
+#include <iostream>        // cout, ... within namespace std
+int main()
+{
+
+    
+}
