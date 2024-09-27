@@ -1,7 +1,8 @@
 import tqdm
+import time
 
-epochs = 10
-steps_per_epoch = 100
+epochs = 100
+steps_per_epoch = 10
 data_loader = range(steps_per_epoch)
 
 for epoch in range(epochs):
@@ -9,3 +10,4 @@ for epoch in range(epochs):
         for batch in data_loader:
             print('Training...')
             pbar.update(1)
+        time.sleep(0.5)
