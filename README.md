@@ -4,6 +4,13 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
+## Day 29:
+
+---
+
+## Day 28:
+---
+
 ## Day 27: Logging and progress bars with python
 
 ---
