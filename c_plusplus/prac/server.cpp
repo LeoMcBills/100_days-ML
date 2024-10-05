@@ -19,5 +19,12 @@ int main() {
     address.sin_addr.s_addr = INADDR_ANY;  // Bind to all available interfaces
     address.sin_port = htons(8080);        // Use port 8080
 
+    // Bind the socket to the specified address and port
+    if (bind(server_fd, (struct sockaddr*)&address, addrlen) < 0) {
+        std::cerr << "Bind failed\n";
+        close(server_fd);
+        return 1;
+    }
+
     return 0;
 }
