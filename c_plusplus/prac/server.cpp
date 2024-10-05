@@ -43,5 +43,10 @@ int main() {
         return 1;
     }
 
+    // Send a welcome message to the client
+    const char* message = "Hello from server";
+    send(new_socket, message, strlen(message), 0);
+    std::cout << "Welcome message sent to client\n";
+
     return 0;
 }
