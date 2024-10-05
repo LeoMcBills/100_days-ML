@@ -26,5 +26,16 @@ int main() {
         return 1;
     }
 
+    // Listen for incoming connections (max queue length = 3)
+    if (listen(server_fd, 3) < 0) {
+        std::cerr << "Listen failed\n";
+        close(server_fd);
+        return 1;
+    }
+
+    std::cout << "Server listening on port 8080...\n";
+
+    
+
     return 0;
 }
