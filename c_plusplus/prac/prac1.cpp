@@ -14,6 +14,16 @@ int main(int argc, char **argv) {
     std::cout << std::unitbuf;
     std::cerr << std::unitbuf;
     
+    // You can use print statements as follows for debugging, they'll be visible when running tests.
+    std::cout << "Logs from your program will appear here!\n";
+
+    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (server_fd < 0) {
+        std::cerr << "Failed to create server socket\n";
+        return 1;
+    }
+
+    
     return 0;
 }
 
