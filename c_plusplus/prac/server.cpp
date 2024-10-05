@@ -35,7 +35,13 @@ int main() {
 
     std::cout << "Server listening on port 8080...\n";
 
-    
+    // Accept a connection from a client
+    int new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen);
+    if (new_socket < 0) {
+        std::cerr << "Accept failed\n";
+        close(server_fd);
+        return 1;
+    }
 
     return 0;
 }
