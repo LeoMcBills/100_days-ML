@@ -48,5 +48,9 @@ int main() {
     send(new_socket, message, strlen(message), 0);
     std::cout << "Welcome message sent to client\n";
 
+    // close the client socket and server socket
+    close(new_socket);
+    close(server_fd);
+
     return 0;
 }
