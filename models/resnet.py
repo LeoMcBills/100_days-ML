@@ -6,3 +6,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# print('Device:', device)
+
+# Data handling
