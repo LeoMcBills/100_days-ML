@@ -18,3 +18,13 @@ class ResidualBlock(Module):
         self.downsample = downsample
         self.relu = nn.ReLU()
         self.out_channels = out_channels
+
+    def forward(self, x):
+        residual = x
+        out = self.conv1(x)
+        out = self.conv2(out)
+        if self.downsample:
+            residual = self.downsample(x)
+        out += residual
+        out = self.relu(out)
+        return out
