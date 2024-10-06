@@ -22,7 +22,7 @@ def data_loader(data_dir,
         std=[0.2023, 0.1994, 0.2010],
     )
     # Define transforms
-    transform = transforms.compose([
+    transform = transforms.Compose([
         transforms.Resize((224,224)),
         transforms.ToTensor(),
         normalize,
