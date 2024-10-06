@@ -13,7 +13,7 @@ model = ResNet(ResidualBlock, [3, 4, 6, 3]).to(device)
 
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr==learning_rate, weight_decay=0.001, momentum=0.9)
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay=0.001, momentum=0.9)
 
 # Train the model
 total_step = len(train_loader)

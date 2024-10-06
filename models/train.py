@@ -1,5 +1,5 @@
 import gc
-from data import train_loader, device
+from data import train_loader, device, valid_loader
 import torch
 from hyperparameters import num_epochs, num_classes, batch_size, learning_rate, model, criterion, optimizer
 
