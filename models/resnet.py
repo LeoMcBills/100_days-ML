@@ -82,3 +82,6 @@ def data_loader(data_dir,
     )
 
     return (train_loader, valid_loader)
+
+train_loader, valid_loader = data_loader(data_dir='./data', batch_size=8)
+test_loader = data_loader(data_dir='./data', batch_size=8, test=True)
