@@ -2,6 +2,7 @@ import torch
 from torch.nn import Module
 import torch.nn as nn
 import numpy as np
+from torchsummary import summary
 
 class ResidualBlock(Module):
     def __init__(self, in_channels, out_channels, stride=1, downsample=None):
@@ -73,3 +74,6 @@ class ResNet(Module):
         x = self.fc(x)
 
         return x
+    
+model = ResNet(ResidualBlock, [2, 2, 2, 2])
+summary(model, (3, 224, 224))
