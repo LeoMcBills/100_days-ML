@@ -1,6 +1,46 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 26**.
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 36**
+
+---
+
+## Day 36: Continuation with ResNet
+
+
+---
+
+## Day 35: A deep dive into the ResNet architecture
+
+---
+
+## Day 34:
+
+---
+
+## Day 33:
+
+---
+
+## Day32: Write a script for custom datasets for an image enhancing project
+
+---
+
+## Day 31: Practice with organizing own datasets
+
+---
+
+## Day 30:
+
+---
+
+## Day 29:
+
+---
+
+## Day 28:
+---
+
+## Day 27: Logging and progress bars with python
 
 ---
 
