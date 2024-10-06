@@ -17,3 +17,5 @@ optimizer = torch.optim.SGD(model.parameters(), lr==learning_rate, weight_decay=
 
 # Train the model
 total_step = len(train_loader)
+
+print(model)

@@ -7,6 +7,7 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ## Day 36: Continuation with ResNet
 
 
+
 ---
 
 ## Day 35: A deep dive into the ResNet architecture
