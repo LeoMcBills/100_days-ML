@@ -4,6 +4,10 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
+## Day 38: Deep Dive into Docker
+
+---
+
 ## Day 37: Docker and Kubernetes
 
 ---
