@@ -4,7 +4,7 @@ import numpy as np
 
 from skimage import io
 
-vol = io.imread("attention-mri.tif")
+vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
 volume = vol.T
 r, c = volume[0].shape
 
