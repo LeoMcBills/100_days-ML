@@ -1,12 +1,12 @@
 import sys
-import threading
 import numpy as np
 from skimage import io
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from mpl_toolkits.mplot3d import Axes3D
 import tkinter as tk
 from tkinter import ttk
-from tkhtmlview import HTMLLabel
-from plotly.offline import plot
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class MRIViewer(tk.Tk):
     def __init__(self):
@@ -14,102 +14,87 @@ class MRIViewer(tk.Tk):
         self.title('MRI Viewer')
         self.geometry('800x600')
 
-        self.html_label = HTMLLabel(self, html="<h1>Loading...</h1>")
-        self.html_label.pack(fill="both", expand=True)
+        self.loading_label = ttk.Label(self, text="Loading...")
+        self.loading_label.pack(fill="both", expand=True)
 
-        # Load data and create figure in a separate thread
-        threading.Thread(target=self.load_data_and_create_figure, daemon=True).start()
+        # Load data and create figure in the main thread
+        self.load_data_and_create_figure()
 
     def load_data_and_create_figure(self):
-        self.volume = io.imread("attention-mri.tif").T
-        self.r, self.c = self.volume[0].shape
+        self.volume = io.imread("attention-mri.tif")
+        self.slices, self.height, self.width = self.volume.shape
+        self.slices = 67  # Set the number of slices to 67
 
-        self.fig = self.create_figure()
-        html = plot(self.fig, output_type='div', include_plotlyjs='cdn')
+        self.fig = plt.figure(figsize=(8, 6))
+        self.ax = self.fig.add_subplot(111, projection='3d')
+
+        self.create_animation()
         
-        # Update the UI in the main thread
-        self.after(0, self.update_html, html)
+        # Update the UI
+        self.update_ui()
 
-    def update_html(self, html):
-        self.html_label.set_html(html)
+    def update_ui(self):
+        self.loading_label.destroy()
+        
+        self.canvas = FigureCanvasTkAgg(self.fig, master=self)
+        self.canvas.draw()
+        self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-    def create_figure(self):
-        nb_frames = 68
+        # Add play button
+        control_frame = ttk.Frame(self)
+        control_frame.pack(fill=tk.X)
 
-        frames = [go.Frame(data=go.Surface(
-            z=(6.7 - k * 0.1) * np.ones((self.r, self.c)),
-            surfacecolor=np.flipud(self.volume[67 - k]),
-            cmin=0, cmax=200
-            ),
-            name=str(k)
-            )
-            for k in range(nb_frames)]
+        self.play_button = ttk.Button(control_frame, text="Play", command=self.play_animation)
+        self.play_button.pack(side=tk.LEFT)
 
-        fig = go.Figure(frames=frames)
+    def create_animation(self):
+        self.ax.clear()
+        self.ax.set_xlabel('X')
+        self.ax.set_ylabel('Y')
+        self.ax.set_zlabel('Z')
+        self.ax.set_title('3D MRI Scan Animation')
 
-        fig.add_trace(go.Surface(
-            z=6.7 * np.ones((self.r, self.c)),
-            surfacecolor=np.flipud(self.volume[67]),
-            colorscale='Gray',
-            cmin=0, cmax=200,
-            colorbar=dict(thickness=20, ticklen=4)
-            ))
+        # Initial empty plot
+        self.plot = [self.ax.plot_surface(np.array([[0]]), np.array([[0]]), np.array([[0]]), 
+                                          rstride=1, cstride=1, cmap='viridis', 
+                                          edgecolor='none', alpha=0.8)]
 
-        sliders = [{
-            "pad": {"b": 10, "t": 60},
-            "len": 0.9,
-            "x": 0.1,
-            "y": 0,
-            "steps": [
-                {
-                    "args": [[f.name], self.frame_args(0)],
-                    "label": str(k),
-                    "method": "animate",
-                }
-                for k, f in enumerate(frames)
-            ],
-        }]
+        self.anim = FuncAnimation(self.fig, self.update, frames=self.slices, 
+                                  interval=100, blit=False, repeat=True)
+        self.anim.event_source = None  # Stop animation initially
+        
+        self.fig.tight_layout()
 
-        fig.update_layout(
-            title='Slices in volumetric data @ MRI-Uganda',
-            width=600,
-            height=600,
-            scene=dict(
-                zaxis=dict(range=[-0.1, 6.8], autorange=False),
-                aspectratio=dict(x=1, y=1, z=1),
-            ),
-            updatemenus = [{
-                "buttons": [
-                    {
-                        "args": [None, self.frame_args(50)],
-                        "label": "&#9654;", # play symbol
-                        "method": "animate",
-                    },
-                    {
-                        "args": [[None], self.frame_args(0)],
-                        "label": "&#9724;", # pause symbol
-                        "method": "animate",
-                    },
-                ],
-                "direction": "left",
-                "pad": {"r": 10, "t": 70},
-                "type": "buttons",
-                "x": 0.1,
-                "y": 0,
-            }],
-            sliders=sliders
-        )
+    def update(self, frame):
+        self.ax.clear()
+        self.ax.set_xlabel('X')
+        self.ax.set_ylabel('Y')
+        self.ax.set_zlabel('Z')
+        self.ax.set_title(f'3D MRI Scan - Slice {frame+1}/{self.slices}')
 
-        return fig
+        # Create meshgrid for the current slice
+        x, y = np.meshgrid(range(self.width), range(self.height))
+        z = frame * np.ones_like(x)
 
-    @staticmethod
-    def frame_args(duration):
-        return {
-            "frame": {"duration": duration},
-            "mode": "immediate",
-            "fromcurrent": True,
-            "transition": {"duration": duration, "easing": "linear"},
-        }
+        # Plot the current slice
+        self.ax.plot_surface(x, y, z, rstride=1, cstride=1, 
+                             facecolors=plt.cm.viridis(self.volume[frame]/self.volume.max()), 
+                             edgecolor='none', alpha=0.8)
+
+        # Set consistent viewing angle and limits
+        self.ax.view_init(elev=20, azim=45)
+        self.ax.set_xlim(0, self.width)
+        self.ax.set_ylim(0, self.height)
+        self.ax.set_zlim(0, self.slices)
+
+        self.canvas.draw()
+
+    def play_animation(self):
+        if self.anim.event_source is None:
+            self.anim = FuncAnimation(self.fig, self.update, frames=self.slices, 
+                                      interval=100, blit=False, repeat=True)
+        else:
+            self.anim.event_source.start()
 
 if __name__ == '__main__':
     viewer = MRIViewer()
