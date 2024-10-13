@@ -1,37 +1,42 @@
 import pydicom
 from PIL import Image
 import numpy as np
+import os
+import matplotlib.pyplot as plt
+from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm
+
+def normalize_array(array):
+    """Normalize array to 0-255 range."""
+    min_val, max_val = array.min(), array.max()
+    return ((array - min_val) / (max_val - min_val) * 255).astype(np.uint8)
+
+def save_slice(slice_data, output_path):
+    """Save a single slice as an image."""
+    Image.fromarray(normalize_array(slice_data)).save(output_path)
+
+def plot_middle_slice(pixel_array, output_folder):
+    """Plot the middle slice of the DICOM image."""
+    middle_slice = pixel_array[len(pixel_array) // 2] if len(pixel_array.shape) == 3 else pixel_array
+    plt.imsave(os.path.join(output_folder, 'middle_slice_plot.png'), middle_slice, cmap='gray', format='png')
 
 def dicom_to_images(dicom_file_path, output_folder):
-    # Read the DICOM file
     dicom_data = pydicom.dcmread(dicom_file_path)
-
-    # Get the pixel array from the DICOM data
     pixel_array = dicom_data.pixel_array
-
-    # Check if the image is 3D
-    if len(pixel_array.shape) == 3:
-        num_slices = pixel_array.shape[0]
-    else:
-        num_slices = 1
+    
+    if len(pixel_array.shape) == 2:
         pixel_array = np.expand_dims(pixel_array, axis=0)
-
-    for i in range(num_slices):
-        # Get the slice
-        slice_array = pixel_array[i]
-
-        # Normalize the slice to 0-255 range
-        normalized_array = ((slice_array - np.min(slice_array)) / 
-                            (np.max(slice_array) - np.min(slice_array)) * 255)
-        normalized_array = normalized_array.astype(np.uint8)
-
-        # Create an image from the normalized array
-        image = Image.fromarray(normalized_array)
-
-        # Save the image as a PNG file
+    
+    num_slices = pixel_array.shape[0]
+    
+    def process_slice(i):
         output_image_path = f"{output_folder}/slice_{i:03d}.png"
-        image.save(output_image_path)
-
+        save_slice(pixel_array[i], output_image_path)
+    
+    with ThreadPoolExecutor() as executor:
+        list(tqdm(executor.map(process_slice, range(num_slices)), total=num_slices))
+    
+    plot_middle_slice(pixel_array, output_folder)
     print(f"Saved {num_slices} slices to {output_folder}")
 
 # Example usage

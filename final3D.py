@@ -12,7 +12,7 @@ nb_frames = volume.shape[0]
 fig, ax = plt.subplots(figsize=(8, 8))
 img = ax.imshow(volume[0], cmap='gray', vmin=0, vmax=200)
 ax.set_title('Slices in volumetric data @ MRI-Uganda')
-ax.axis('off')  # Hide the axes
+ax.axis('off')
 
 def update_slice(k):
     img.set_data(volume[k])
