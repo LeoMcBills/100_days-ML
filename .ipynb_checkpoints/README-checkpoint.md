@@ -1,6 +1,46 @@
 # 100 Days of Machine Learning
 
-Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 36**
+Welcome to my 100 Days of Machine Learning journey! This README will serve as a daily log and resource guide as I progress through various topics and projects in machine learning, with a focus on using PyTorch. Today is **Day 46**
+
+---
+
+## Day 46:
+
+---
+
+## Day 45: Deep dive into PyTorch's Automatic Differentiation
+
+---
+
+## Day 44: Deep dive into C plus plus classes
+
+---
+
+## Day 43: Autograd review
+
+---
+
+## Day 42:
+
+---
+
+## Day 41:
+
+---
+
+## Day 40:
+
+---
+
+## Day 39: Finalized with intermediate docker concepts
+
+---
+
+## Day 38: Deep Dive into Docker
+
+---
+
+## Day 37: Docker and Kubernetes
 
 ---
 
