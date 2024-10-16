@@ -5,6 +5,10 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ---
 
 ## Day 46: Autograd mechanics
+This note will present an overview of how autograd works and records the operations. It's not strictly necessary to understand all this but I am recommended to get familiar with it, as it will help me write more efficient, cleaner programs, and can aid me in debugging.
+
+## How autograd encodes the history
+
 
 ---
 
