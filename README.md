@@ -8,6 +8,8 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 This note will present an overview of how autograd works and records the operations. It's not strictly necessary to understand all this but I am recommended to get familiar with it, as it will help me write more efficient, cleaner programs, and can aid me in debugging.
 
 ## How autograd encodes the history
+Autograd is a reverse automatic differentiation system. Conceptually, autograd records a graph recording all of the operations that created the data as you execute operations, giving you a directed acyclic graph whose leaves are the input tensors and roots are the ouput tensors. By tracing this graph from roots to leaves, you can automatically compute the gradients using the chain rule.
+
 
 
 ---
