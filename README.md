@@ -10,6 +10,8 @@ This note will present an overview of how autograd works and records the operati
 ## How autograd encodes the history
 Autograd is a reverse automatic differentiation system. Conceptually, autograd records a graph recording all of the operations that created the data as you execute operations, giving you a directed acyclic graph whose leaves are the input tensors and roots are the ouput tensors. By tracing this graph from roots to leaves, you can automatically compute the gradients using the chain rule.
 
+Internally, autograd represents this graph as a graph of `Function` objects (really expressions), which can be `apply()` ed to compute the result of evaluating the graph. When computing the forward pass, autograd simultaneously performs the requested computations and builds up a graph representing the function that computes the gradients (the `.grad_fn` attribute of each `torch.Tensor` is an entry point into this graph). When the forward pass is completed, we evaluate this graph in the backwards pass to compute the gradients.
+
 
 
 ---
