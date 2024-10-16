@@ -19,6 +19,8 @@ Some operations need intermediary results to be saved during the forward pass in
 
 When defining a custom Python `Function`, you can use `save_for_backward()` to save tensors during the forward pass and `saved_tensors` to retrieve them during the backward pass.
 
+For operations that PyTorch defines (e.g. `torch.pow()`), tensors are automatically saved as needed. You can explore (for educational or debugging purposes) which tensors are saved by a certain `grad_fn` by looking for its attributes starting with the prefix `_saved`.
+
 ---
 
 ## Day 45: Deep dive into PyTorch's Automatic Differentiation
