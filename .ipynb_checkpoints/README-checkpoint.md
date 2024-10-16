@@ -12,6 +12,9 @@ Autograd is a reverse automatic differentiation system. Conceptually, autograd r
 
 Internally, autograd represents this graph as a graph of `Function` objects (really expressions), which can be `apply()` ed to compute the result of evaluating the graph. When computing the forward pass, autograd simultaneously performs the requested computations and builds up a graph representing the function that computes the gradients (the `.grad_fn` attribute of each `torch.Tensor` is an entry point into this graph). When the forward pass is completed, we evaluate this graph in the backwards pass to compute the gradients.
 
+An important thing to note is that the graph is recreated from scratch at every iteration, and this is exactly what allows for using arbitrary Python control flow statements, that can change the overall shape and size of the graph at every iteration. You don't have to encode all possible paths before you launch the training - what you run is what you differentiate.
+
+## Saved tensors
 
 
 ---
