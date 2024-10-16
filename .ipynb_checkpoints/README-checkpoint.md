@@ -164,6 +164,7 @@ In-place correctness checks
 
 Every tensor keeps a version counter, that is incremented every time it is marked dirty in any operation. When a Function saves any tensors for backward, a version counter of their containing Tensor is saved as well. Once you access self.saved_tensors it is checked, and if it is greater than the saved value an error is raised. This ensures that if you’re using in-place functions and not seeing any errors, you can be sure that the computed gradients are correct.
 
+[!For Tomorrow](https://pytorch.org/docs/stable/notes/autograd.html)
 
 ---
 
