@@ -4,7 +4,7 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
-## Day 46:
+## Day 46 Autograd mechanics
 
 ---
 
