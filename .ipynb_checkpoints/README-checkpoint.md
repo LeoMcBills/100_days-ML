@@ -21,6 +21,150 @@ When defining a custom Python `Function`, you can use `save_for_backward()` to s
 
 For operations that PyTorch defines (e.g. `torch.pow()`), tensors are automatically saved as needed. You can explore (for educational or debugging purposes) which tensors are saved by a certain `grad_fn` by looking for its attributes starting with the prefix `_saved`.
 
+```python
+x = torch.randn(5, requires_grad=True)
+y = x.exp()
+print(y.equal(y.grad_fn._saved_result))  # True
+print(y is y.grad_fn._saved_result)  # False
+```
+
+Under the hood, to prevent reference cycles, PyTorch has packed the tensor upon saving and unpacked it into a different tensor for reading. Here, the tensor you get from accessing y.grad_fn._saved_result is a different tensor object than y (but they still share the same storage).
+
+Whether a tensor will be packed into a different tensor object depends on whether it is an output of its own grad_fn, which is an implementation detail subject to change and that users should not rely on.
+
+You can control how PyTorch does packing / unpacking with Hooks for saved tensors.
+Gradients for non-differentiable functions
+
+The gradient computation using Automatic Differentiation is only valid when each elementary function being used is differentiable. Unfortunately many of the functions we use in practice do not have this property (relu or sqrt at 0, for example). To try and reduce the impact of functions that are non-differentiable, we define the gradients of the elementary operations by applying the following rules in order:
+
+    If the function is differentiable and thus a gradient exists at the current point, use it.
+
+    If the function is convex (at least locally), use the sub-gradient of minimum norm (it is the steepest descent direction).
+
+    If the function is concave (at least locally), use the super-gradient of minimum norm (consider -f(x) and apply the previous point).
+
+    If the function is defined, define the gradient at the current point by continuity (note that inf is possible here, for example for sqrt(0)). If multiple values are possible, pick one arbitrarily.
+
+    If the function is not defined (sqrt(-1), log(-1) or most functions when the input is NaN, for example) then the value used as the gradient is arbitrary (we might also raise an error but that is not guaranteed). Most functions will use NaN as the gradient, but for performance reasons, some functions will use other values (log(-1), for example).
+
+    If the function is not a deterministic mapping (i.e. it is not a mathematical function), it will be marked as non-differentiable. This will make it error out in the backward if used on tensors that require grad outside of a no_grad environment.
+
+Locally disabling gradient computation
+
+There are several mechanisms available from Python to locally disable gradient computation:
+
+To disable gradients across entire blocks of code, there are context managers like no-grad mode and inference mode. For more fine-grained exclusion of subgraphs from gradient computation, there is setting the requires_grad field of a tensor.
+
+Below, in addition to discussing the mechanisms above, we also describe evaluation mode (nn.Module.eval()), a method that is not used to disable gradient computation but, because of its name, is often mixed up with the three.
+Setting requires_grad
+
+requires_grad is a flag, defaulting to false unless wrapped in a nn.Parameter, that allows for fine-grained exclusion of subgraphs from gradient computation. It takes effect in both the forward and backward passes:
+
+During the forward pass, an operation is only recorded in the backward graph if at least one of its input tensors require grad. During the backward pass (.backward()), only leaf tensors with requires_grad=True will have gradients accumulated into their .grad fields.
+
+It is important to note that even though every tensor has this flag, setting it only makes sense for leaf tensors (tensors that do not have a grad_fn, e.g., a nn.Module’s parameters). Non-leaf tensors (tensors that do have grad_fn) are tensors that have a backward graph associated with them. Thus their gradients will be needed as an intermediary result to compute the gradient for a leaf tensor that requires grad. From this definition, it is clear that all non-leaf tensors will automatically have require_grad=True.
+
+Setting requires_grad should be the main way you control which parts of the model are part of the gradient computation, for example, if you need to freeze parts of your pretrained model during model fine-tuning.
+
+To freeze parts of your model, simply apply .requires_grad_(False) to the parameters that you don’t want updated. And as described above, since computations that use these parameters as inputs would not be recorded in the forward pass, they won’t have their .grad fields updated in the backward pass because they won’t be part of the backward graph in the first place, as desired.
+
+Because this is such a common pattern, requires_grad can also be set at the module level with nn.Module.requires_grad_(). When applied to a module, .requires_grad_() takes effect on all of the module’s parameters (which have requires_grad=True by default).
+Grad Modes
+
+Apart from setting requires_grad there are also three grad modes that can be selected from Python that can affect how computations in PyTorch are processed by autograd internally: default mode (grad mode), no-grad mode, and inference mode, all of which can be togglable via context managers and decorators.
+
+Mode
+	
+
+Excludes operations from being recorded in backward graph
+	
+
+Skips additional autograd tracking overhead
+	
+
+Tensors created while the mode is enabled can be used in grad-mode later
+	
+
+Examples
+
+default
+			
+
+✓
+	
+
+Forward pass
+
+no-grad
+	
+
+✓
+		
+
+✓
+	
+
+Optimizer updates
+
+inference
+	
+
+✓
+	
+
+✓
+		
+
+Data processing, model evaluation
+Default Mode (Grad Mode)
+
+The “default mode” is the mode we are implicitly in when no other modes like no-grad and inference mode are enabled. To be contrasted with “no-grad mode” the default mode is also sometimes called “grad mode”.
+
+The most important thing to know about the default mode is that it is the only mode in which requires_grad takes effect. requires_grad is always overridden to be False in both the two other modes.
+No-grad Mode
+
+Computations in no-grad mode behave as if none of the inputs require grad. In other words, computations in no-grad mode are never recorded in the backward graph even if there are inputs that have require_grad=True.
+
+Enable no-grad mode when you need to perform operations that should not be recorded by autograd, but you’d still like to use the outputs of these computations in grad mode later. This context manager makes it convenient to disable gradients for a block of code or function without having to temporarily set tensors to have requires_grad=False, and then back to True.
+
+For example, no-grad mode might be useful when writing an optimizer: when performing the training update you’d like to update parameters in-place without the update being recorded by autograd. You also intend to use the updated parameters for computations in grad mode in the next forward pass.
+
+The implementations in torch.nn.init also rely on no-grad mode when initializing the parameters as to avoid autograd tracking when updating the initialized parameters in-place.
+Inference Mode
+
+Inference mode is the extreme version of no-grad mode. Just like in no-grad mode, computations in inference mode are not recorded in the backward graph, but enabling inference mode will allow PyTorch to speed up your model even more. This better runtime comes with a drawback: tensors created in inference mode will not be able to be used in computations to be recorded by autograd after exiting inference mode.
+
+Enable inference mode when you are performing computations that don’t need to be recorded in the backward graph, AND you don’t plan on using the tensors created in inference mode in any computation that is to be recorded by autograd later.
+
+It is recommended that you try out inference mode in the parts of your code that do not require autograd tracking (e.g., data processing and model evaluation). If it works out of the box for your use case it’s a free performance win. If you run into errors after enabling inference mode, check that you are not using tensors created in inference mode in computations that are recorded by autograd after exiting inference mode. If you cannot avoid such use in your case, you can always switch back to no-grad mode.
+
+For details on inference mode please see Inference Mode.
+
+For implementation details of inference mode see RFC-0011-InferenceMode.
+Evaluation Mode (nn.Module.eval())
+
+Evaluation mode is not a mechanism to locally disable gradient computation. It is included here anyway because it is sometimes confused to be such a mechanism.
+
+Functionally, module.eval() (or equivalently module.train(False)) are completely orthogonal to no-grad mode and inference mode. How model.eval() affects your model depends entirely on the specific modules used in your model and whether they define any training-mode specific behavior.
+
+You are responsible for calling model.eval() and model.train() if your model relies on modules such as torch.nn.Dropout and torch.nn.BatchNorm2d that may behave differently depending on training mode, for example, to avoid updating your BatchNorm running statistics on validation data.
+
+It is recommended that you always use model.train() when training and model.eval() when evaluating your model (validation/testing) even if you aren’t sure your model has training-mode specific behavior, because a module you are using might be updated to behave differently in training and eval modes.
+In-place operations with autograd
+
+Supporting in-place operations in autograd is a hard matter, and we discourage their use in most cases. Autograd’s aggressive buffer freeing and reuse makes it very efficient and there are very few occasions when in-place operations lower memory usage by any significant amount. Unless you’re operating under heavy memory pressure, you might never need to use them.
+
+There are two main reasons that limit the applicability of in-place operations:
+
+    In-place operations can potentially overwrite values required to compute gradients.
+
+    Every in-place operation requires the implementation to rewrite the computational graph. Out-of-place versions simply allocate new objects and keep references to the old graph, while in-place operations, require changing the creator of all inputs to the Function representing this operation. This can be tricky, especially if there are many Tensors that reference the same storage (e.g. created by indexing or transposing), and in-place functions will raise an error if the storage of modified inputs is referenced by any other Tensor.
+
+In-place correctness checks
+
+Every tensor keeps a version counter, that is incremented every time it is marked dirty in any operation. When a Function saves any tensors for backward, a version counter of their containing Tensor is saved as well. Once you access self.saved_tensors it is checked, and if it is greater than the saved value an error is raised. This ensures that if you’re using in-place functions and not seeing any errors, you can be sure that the computed gradients are correct.
+
+
 ---
 
 ## Day 45: Deep dive into PyTorch's Automatic Differentiation
