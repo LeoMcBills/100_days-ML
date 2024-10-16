@@ -15,7 +15,9 @@ Internally, autograd represents this graph as a graph of `Function` objects (rea
 An important thing to note is that the graph is recreated from scratch at every iteration, and this is exactly what allows for using arbitrary Python control flow statements, that can change the overall shape and size of the graph at every iteration. You don't have to encode all possible paths before you launch the training - what you run is what you differentiate.
 
 ## Saved tensors
+Some operations need intermediary results to be saved during the forward pass in order to execute the backward pass. For example, the function `x -> x^2` saves the input x to compute the gradient.
 
+When defining a custom Python `Function`, you can use `save_for_backward()` to save tensors during the forward pass and `saved_tensors` to retrieve them during the backward pass.
 
 ---
 
