@@ -4,19 +4,21 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 
 ---
 
-## Day 50:
+## Day 50: Tensorboard and Wandb
 
 ---
 
-## Day 49:
+## Day 49: Compared a ResNet vs ConvNeXt
+[!Reference Repo](https://keras.io/api/keras_cv/models/)
 
 ---
 
-## Day 48:
+## Day 48: Looked into ConvNeXt, the ConvNet of 2020s
+[!Reference Repo](https://github.com/facebookresearch/ConvNeXt)
 
 ---
 
-## Day 47:
+## Day 47: Final touches with Autograd
 
 ---
 
