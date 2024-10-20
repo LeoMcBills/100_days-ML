@@ -9,7 +9,7 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ---
 
 ## Day 49: Compared a ResNet vs ConvNeXt
-[!Reference Repo](https://keras.io/api/keras_cv/models/)
+[Reference Repo](https://keras.io/api/keras_cv/models/)
 
 ---
 
