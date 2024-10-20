@@ -14,7 +14,7 @@ Welcome to my 100 Days of Machine Learning journey! This README will serve as a 
 ---
 
 ## Day 48: Looked into ConvNeXt, the ConvNet of 2020s
-[!Reference Repo](https://github.com/facebookresearch/ConvNeXt)
+[Reference Repo](https://github.com/facebookresearch/ConvNeXt)
 
 ---
 
